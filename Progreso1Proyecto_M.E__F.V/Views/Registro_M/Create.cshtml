@@ -1,0 +1,74 @@
+﻿@model Progreso1Proyecto_M.E__F.V.Models.Registro_M
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Registro_M</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Semestre" class="control-label"></label>
+                en el que recibio clases con el Maestro 
+                <span style="color:red;">(Ejemplo: Primer Semestre = 1, Segundo Semestre = 2, etc )</span>
+                <input asp-for="Semestre" class="form-control" />
+                <span asp-validation-for="Semestre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Materia" class="control-label"></label>
+                que imparte
+                <input asp-for="Materia" class="form-control" />
+                <span asp-validation-for="Materia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Nombre del
+                <label asp-for="Profesor" class="control-label"></label>
+                <input asp-for="Profesor" class="form-control" />
+                <span asp-validation-for="Profesor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Calificacion" class="control-label"></label>
+                <span style="color:red;">**(Muy malo 1 - Excelente 10)**</span>
+                <input asp-for="Calificacion" class="form-control" />
+                <span asp-validation-for="Calificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                breve
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cualidad" class="control-label"></label>
+                <span style="color:red;">**Una sola palabra**</span>
+                <input asp-for="Cualidad" class="form-control" />
+                <span asp-validation-for="Cualidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Horario" class="control-label"></label>
+                <strong>
+                    1. Mañana
+                    2. Tarde
+                    3. Noche</strong>
+                <input asp-for="Horario" class="form-control" />
+                <span asp-validation-for="Horario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>OBJETIVO:</h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Paginación de objetivos</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div id="objetivos">
+		<p>1. Crear una herramienta centralizada donde los estudiantes de todos los semestres puedan compartir información y conocimientos importantes de la carrera.<img src="~/img/logo.png" class="img-fuid" /></p>
+		
+		<p>2. Proporcionar un espacio para subir y consultar información de la carrera, lo que permitiría la retención del conocimiento y el acceso a éste por parte de personas de cualquier semestre de la carrera.<img src="~/img/Contacto.jpg" class="img-fuid" /></p>
+		
+		<p>3. Generar un apoyo de estudiante a estudiante para ayudar a comprender mejor los conceptos difíciles.<img src="~/img/Contacto.jpg" class="img-fuid" /></p>
+		
+		<p>4. Ofrecer una herramienta sencilla e intuitiva para subir, editar, eliminar y filtrar documentos de acuerdo a su materia, semestre y año.<img src="~/img/Contacto.jpg" class="img-fuid" /></p>
+		
+		<p>5. Crear una plataforma de ayuda para que los estudiantes de Ingeniería de Software puedan compartir conocimientos y ayudarse mutuamente en su carrera profesional.<img src="~/img/Contacto.jpg" class="img-fuid" /></p>
+	</div>
+	<div id="paginacion">
+		<center>
+			<button onclick="mostrarPagina(1)">1</button>
+			<button onclick="mostrarPagina(2)">2</button>
+			<button onclick="mostrarPagina(3)">3</button>
+			<button onclick="mostrarPagina(4)">4</button>
+			<button onclick="mostrarPagina(5)">5</button>
+		</center>
+
+	</div>
+	<script>
+		var objetivos = document.getElementById("objetivos").getElementsByTagName("p");
+		var numPaginas = objetivos.length;
+		var objetivoPorPagina = 1;
+		var paginaActual = 1;
+
+		function mostrarPagina(numeroPagina) {
+			if (numeroPagina < 1) {
+				numeroPagina = 1;
+			} else if (numeroPagina > numPaginas) {
+				numeroPagina = numPaginas;
+			}
+
+			paginaActual = numeroPagina;
+
+			var inicio = (paginaActual - 1) * objetivoPorPagina;
+			var fin = inicio + objetivoPorPagina;
+
+			for (var i = 0; i < objetivos.length; i++) {
+				objetivos[i].style.display = "none";
+			}
+
+			for (var i = inicio; i < fin; i++) {
+				if (objetivos[i]) {
+					objetivos[i].style.display = "block";
+				}
+			}
+
+			actualizarBotones();
+		}
+
+		function actualizarBotones() {
+			var botones = document.getElementById("paginacion").getElementsByTagName("button");
+
+			for (var i = 0; i < botones.length; i++) {
+				if (i + 1 == paginaActual) {
+					botones[i].classList.add("activo");
+				} else {
+					botones[i].classList.remove("activo");
+				}
+			}
+		}
+
+		mostrarPagina(1);
+	</script>
+	<style>
+		.activo {
+			background-color: #40E0D0;
+			color: darkslategrey;
+		}
+	</style>
+</body>
+</html>
