@@ -174,14 +174,15 @@ namespace Progreso1Proyecto_M.E__F.V.Controllers
             {
                 _context.Registro_M.Remove(registro_M);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool Registro_MExists(int id)
         {
-          return (_context.Registro_M?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Registro_M?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
     }
 }
